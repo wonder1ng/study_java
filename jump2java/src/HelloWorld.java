@@ -23,14 +23,15 @@ public class HelloWorld {
 
         int i =0;
         int j = 10;
-        i++;
-        j--;
+        i++;	// 1 증가 할당
+        j--;	// 1 감소 할당
         System.out.println(i);
         System.out.println(j);
         System.out.println(j++);
         System.out.println(j);
         System.out.println(++j);
         System.out.println(j);
+        System.out.println("----------");
 
         boolean isSuccess = true;
         boolean isTest = false;
@@ -47,6 +48,38 @@ public class HelloWorld {
         boolean isOdd = base % 99 == 1;
         System.out.println(base % 99);
         System.out.println(isOdd);
+        System.out.println("----------");
+
+        char c1 = 'c';		// 문자로 입력.
+        char c2 = 99;		// 숫자로 입력.
+        char c3 = '\u0061';	// 유니코드로 입력.
+        // char c1 = 'cc';		// 오류 발생.
+        // char c2 = 65536;		// 오류 발생. 최대 65535.
+        // char c3 = '\uffff';	// 유니코드 최대값.
+        System.out.println(c1);
+        System.out.println(c2);
+        System.out.println(c3);
+        System.out.println("----------");
+
+        String s1 = "Haapy Java";
+        String s2 = "a";
+        String s3 = new String("123");
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(s3);
+        System.out.println("----------");
+
+        String e1 = "hello";
+        String e2 = "java";
+        String e3 = new String("hello");
+        String e4 = "hello";
+        String e5 = new String("hello");
+        System.out.println(e1.equals(e2));
+        System.out.println(e1.equals(e3));
+        System.out.println(e1 == e3);   // ==는 객체를 비교하는 것이기에 false
+        System.out.println(e1 == e4);   // 리터럴로 생성했기에 같은 객체로 true
+        System.out.println(e3 == e5);   // 다른 객체라 false
+        System.out.println("----------");
     }
     public static void main2(String[] args) {
     }
