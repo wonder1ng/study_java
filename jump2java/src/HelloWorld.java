@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // 클래스 블록
 public class HelloWorld {
     /* 메서드 블록 */
@@ -79,6 +81,47 @@ public class HelloWorld {
         System.out.println(e1 == e3);   // ==는 객체를 비교하는 것이기에 false
         System.out.println(e1 == e4);   // 리터럴로 생성했기에 같은 객체로 true
         System.out.println(e3 == e5);   // 다른 객체라 false
+        System.out.println("----------");
+
+        String i1 = "Hello Java";
+        System.out.println(i1.indexOf("Java"));
+        System.out.println(i1.indexOf("JAVA"));
+        System.out.println(i1.indexOf("a", 8));
+        System.out.println("----------");
+
+        String con1 = "Hello Java";
+        System.out.println(con1.contains("Java"));
+        System.out.println(con1.contains("JAVA"));
+        System.out.println("----------");
+
+        String ca1 = "Hello Java";
+        System.out.println(ca1.charAt(4));
+        System.out.println("----------");
+
+        String r1 = "Hello Java";
+        System.out.println(r1.replaceAll("Java", "World"));
+        System.out.println("----------");
+
+        String subst1 = "Hello Java";
+        System.out.println(subst1.substring(6, 10));
+        System.out.println("----------");
+
+        String up1 = "Hello Java";
+        System.out.println(up1.toUpperCase());
+        System.out.println(up1.toLowerCase());
+        System.out.println("----------");
+
+//        String sp1 = "a:b:c:d";
+//        String[] result = sp1.split(":");
+        String sp1 = "a:b:::c:d";
+        String[] result = sp1.split(":");
+        System.out.println(result);
+        System.out.println(Arrays.toString(sp1.split(":")));
+        System.out.println("----------");
+
+        System.out.println(String.format("I eat %d apples.", 3));
+        System.out.println(String.format("I eat %s apples.", "three"));
+        System.out.println(String.format("I eat %s plus %s apples.", 3, "six"));
         System.out.println("----------");
     }
     public static void main2(String[] args) {
