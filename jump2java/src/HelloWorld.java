@@ -1,11 +1,18 @@
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 
 // 클래스 블록
 public class HelloWorld {
     /* 메서드 블록 */
     public static void main(String[] args) {
+        // Heello World
         System.out.println("Hello World");
+
+        // 숫자 자료형
         int a = 2;
         int b = 4;
         System.out.println(a+b);
@@ -53,6 +60,7 @@ public class HelloWorld {
         System.out.println(isOdd);
         System.out.println("----------");
 
+        // 문자 및 문자열 자료형
         char c1 = 'c';		// 문자로 입력.
         char c2 = 99;		// 숫자로 입력.
         char c3 = '\u0061';	// 유니코드로 입력.
@@ -145,6 +153,7 @@ public class HelloWorld {
         System.out.println(res2);   // 출력 결과는 같지만 String 객체가 4개 생성되었다.
         System.out.println("----------");
 
+        // 배열 자료형
         int[] odds = {1, 3, 5, 6, 7, 1, 3,};
         String[] weeks = {"월", "화", "수", "목", "금", "토", "일"};
         System.out.println(Arrays.toString(odds));
@@ -165,6 +174,7 @@ public class HelloWorld {
         System.out.println(weeks2.length);
         System.out.println("----------");
 
+        // 리스트 자료형
         ArrayList pitches = new ArrayList();
         pitches.add("138");
         pitches.add("142");
@@ -185,7 +195,79 @@ public class HelloWorld {
 //        System.out.println(pitches.remove(3));        // 범위 오류
 //        System.out.println((Arrays.toString(pitches));   // 오류 발생
         System.out.println("----------");
-    }
-    public static void main2(String[] args) {
+
+        // 제네릭스
+//        ArrayList<String> geTmp1 = new ArrayList<String>(); // 기본 방식
+//        ArrayList<String> geTmp2 = new ArrayList<>();       // 선호 방식
+
+        // 제네릭스 미사용
+        ArrayList geTmp1 = new ArrayList();
+        geTmp1.add(138);
+        geTmp1.add(129);
+        System.out.println(geTmp1);
+        Integer one = (Integer) geTmp1.get(0);
+//        Integer two = geTmp1.get(1);             // type 오류 발생
+        java.lang.Object two = geTmp1.get(1);    // Object는 최상위 클래스 및 자료형. 제네릭스 미사용 시 Object로 인식.
+        System.out.println(one.getClass().getName());
+        System.out.println(two.getClass().getName());   // 근데 출력은 Integer로 된다. 받고나서 자동으로 형변환된다고 GPT가 말했다.
+        // 제네릭스 사용
+        ArrayList<Integer> geTmp2 = new ArrayList<>();
+        geTmp2.add(138);
+        geTmp2.add(129);
+        Integer one2 = geTmp2.get(1);   // .get()에서 형변환 하지 않음.
+        Integer two2 = geTmp2.get(0);
+        System.out.println(one2.getClass().getName());
+        System.out.println(two2.getClass().getName());
+        System.out.println("----------");
+
+        // add, join, 정렬
+        String[] data = {"138", "129", "142"};
+        ArrayList<String> geTmp3 = new ArrayList<>(Arrays.asList(data));
+        System.out.println(geTmp3);
+//        geTmp3.add(Arrays.asList(data));    // 자료형 오류 발생. 각 원소 별로 넣어줘야 한다.
+        Collections.addAll(geTmp3, data);   // 한벙에 넣기위해 Collections.addAll 사용.
+        System.out.println(geTmp3);
+
+        String geTmp3Res = String.join(", ", geTmp3);   // 각 원소 뒤에 구분자 입력
+        System.out.println(geTmp3Res);
+        System.out.println(geTmp3.toString());      // .toString으로 출력 시 대괄호도 나온다.
+
+        geTmp3.sort(Comparator.naturalOrder());     // 정순
+        System.out.println(geTmp3);
+        geTmp3.sort(Comparator.reverseOrder());     // 역순
+        System.out.println(geTmp3);
+        System.out.println("----------");
+
+        // 맵(Map)
+        HashMap<String, String> map = new HashMap<>();  // 형식을 배열로 설정하면 배열도 기입 가능.
+        map.put("people", "사람");
+        map.put("baseball", "야구");
+        System.out.println(map.toString());
+        System.out.println(map.get("people"));
+        System.out.println(map.get("사람"));      // .get은 키로만 조회한다.
+        System.out.println(map.getOrDefault("사람", "없음")); // null 대신 특정값 출력
+        System.out.println(map.containsKey("people"));  // key에 대한 true, false 반환
+        System.out.println(map.containsValue("사람"));    // value에 대한 true, false 반환
+        System.out.println(map.keySet());       // key 전체
+        System.out.println(map.values());       // value 전체
+        System.out.println(map.entrySet());     // key, value 전체
+        System.out.println(map.remove("people")); // 해당 키 삭제
+        System.out.println(map.size());     // key 갯수 출력
+        System.out.println("----------");
+
+        // 집합(Set)
+        HashSet<Integer> set1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        HashSet<Integer> set2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8, 9));
+        HashSet<Integer> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2);       // intersection와 set2의 교집합, 바로 출력하면 작동 여부 반환
+        System.out.println(intersection);
+
+        HashSet<Integer> union = new HashSet<>(set1);
+        union.addAll(set2);
+        System.out.println(union);      // union과 set2의 합집합
+
+        HashSet<Integer> substract = new HashSet<>(set1);
+        substract.removeAll(set2);
+        System.out.println(substract);      // substract와 set2의 차집합
     }
 }
