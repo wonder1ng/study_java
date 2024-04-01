@@ -7,6 +7,9 @@ import java.util.HashSet;
 
 // 클래스 블록
 public class HelloWorld {
+    enum CoffeType {
+        AMERICANO, ICE_AMERICANO, CAFE_LATTE
+    };
     /* 메서드 블록 */
     public static void main(String[] args) {
         // Heello World
@@ -269,5 +272,19 @@ public class HelloWorld {
         HashSet<Integer> substract = new HashSet<>(set1);
         substract.removeAll(set2);
         System.out.println(substract);      // substract와 set2의 차집합
+        System.out.println("----------");
+
+        System.out.println(CoffeType.AMERICANO);
+        System.out.println(CoffeType.ICE_AMERICANO);
+        System.out.println(CoffeType.CAFE_LATTE);
+        System.out.println("----------");
+
+        String num = "123";
+//        Integer n = num;    // incompatible types 오류 발생
+        Integer n = Integer.parseInt(num);
+        System.out.println(n +" " + n.getClass().getName());
+//        num = n + 456;          // incompatible types 오류 발생
+        num = "" + n + 456;         // 어떤 문자열이든 +로 합치면 변환
+        System.out.println(num +" " + num.getClass().getName());
     }
 }
