@@ -1,9 +1,4 @@
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 // 클래스 블록
 public class HelloWorld {
@@ -274,11 +269,16 @@ public class HelloWorld {
         System.out.println(substract);      // substract와 set2의 차집합
         System.out.println("----------");
 
+        // enum 상수 집합
+//        enum CoffeType {
+//            AMERICANO, ICE_AMERICANO, CAFE_LATTE
+//        };
         System.out.println(CoffeType.AMERICANO);
         System.out.println(CoffeType.ICE_AMERICANO);
         System.out.println(CoffeType.CAFE_LATTE);
         System.out.println("----------");
 
+        // 형 변환
         String num = "123";
 //        Integer n = num;    // incompatible types 오류 발생
         Integer n = Integer.parseInt(num);
@@ -286,5 +286,19 @@ public class HelloWorld {
 //        num = n + 456;          // incompatible types 오류 발생
         num = "" + n + 456;         // 어떤 문자열이든 +로 합치면 변환
         System.out.println(num +" " + num.getClass().getName());
+        num = String.valueOf(n);    // 문자 변환
+        System.out.println(num +" " + num.getClass().getName());
+        num = Integer.toString(n+456);  // 문자 변환
+        System.out.println(num +" " + num.getClass().getName());
+
+        int n1 = 123;   // 원시 자료형은 .getClass().getName()이 안 된다.
+        double d1 = n1;
+        System.out.println((d1));
+
+        double d2 = 123.678;    // 버림
+//        int n2 = d2;      오류 발생
+        int n2 = (int) d2;
+        System.out.println(n2);
+
     }
 }
