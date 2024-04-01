@@ -294,11 +294,12 @@ public class HelloWorld {
         int n1 = 123;   // 원시 자료형은 .getClass().getName()이 안 된다.
         double d1 = n1;
         System.out.println((d1));
-
         double d2 = 123.678;    // 버림
 //        int n2 = d2;      오류 발생
         int n2 = (int) d2;
         System.out.println(n2);
-
+        Double d3 = 123.678;
+        int n3 = d3.intValue();     // 비슷해 보여도 자료형마다 변경법이 다르다.
+        System.out.println(n3);
     }
 }
