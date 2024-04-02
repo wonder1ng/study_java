@@ -403,12 +403,21 @@ public class HelloWorld {
         } System.out.println("----------");
 
         // for
-        String[] numbers = {"one", "two", "three"};
+        short[] scores = {88, 35, 72, 95, 92, 61};
         // numI를 기준으로 numI가 numbers.length미만인 한 numI++을 한다.
         // 배열이라 생각하면 numI를 0에서부터 numbers.length미만이 아닐 때까지 numI++한 값들로 배열을 만든다.
-        for(int numI=0; numI<numbers.length; numI++) {
-        //      초기치;  조건문;               증가치
-            System.out.println(numbers[numI]);
+        for(int numI=0; numI<scores.length; numI++) {
+        //      초기치;        조건문         증가치
+            if (scores[numI]<45) {
+                System.out.println(("과락!!\t"+(numI+1)+"번의 점수는 "+scores[numI]+"점으로 과락입니다."));
+                continue;
+            }
+            System.out.println(numI+1+"번의 점수는 "+scores[numI]+"점입니다.");
+        } System.out.println("----------");
+
+        ArrayList<String> numbers = new ArrayList<>(Arrays.asList("one", "two", "three"));
+        for (String number : numbers) {
+            System.out.println(number);
         } System.out.println("----------");
     }
 }
