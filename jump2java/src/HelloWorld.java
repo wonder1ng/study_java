@@ -299,7 +299,116 @@ public class HelloWorld {
         int n2 = (int) d2;
         System.out.println(n2);
         Double d3 = 123.678;
-        int n3 = d3.intValue();     // 비슷해 보여도 자료형마다 변경법이 다르다.
-        System.out.println(n3);
+        int n3 = d3.intValue();     // 비슷해 보여도 자료형마다 변환법이 다르다.
+        System.out.println(n3);     // to, valueOf, parse로 찾으면 보통 나오는 듯흐다
+        System.out.println("----------");
+
+        // final
+        final int fn = 123;
+//        fn = 456; 오류 발생
+
+        // 조건문
+        // if
+        int money = 0;
+        boolean card = true;
+        if (money >= 1600) {
+            System.out.println("대중 교통을 이용해라");
+            if (money >= 30000) {
+                System.out.println("택시를 타고 가라");
+            } else {
+                System.out.println("버스를 타고 가라");
+            }
+        } else if(card) {           // 파이썬과는 다르게 boolean 값만 된다.
+            System.out.println("마음대로 해라");
+        } else {
+            System.out.println("걸어가라");
+        }
+        System.out.println("----------");
+
+        // switch·case
+        int day = 5;
+        String dayName = "";
+        switch (day) {    // 입력 변수의 자료형은 byte, short, char, int, enum, String만 가능)
+            case 0: dayName = "Mon";
+                System.out.println(dayName);
+                break;
+            case 1: dayName = "Tue";
+                System.out.println(dayName);
+                break;
+            case 2: dayName = "Wen";
+                System.out.println(dayName);
+                break;
+            case 3: dayName = "Thu";
+                System.out.println(dayName);
+                break;
+            case 4: dayName = "Fri";
+                System.out.println(dayName);
+                break;
+            case 5: dayName = "Sat";
+                System.out.println(dayName);
+                break;
+            case 6: dayName = "Sun";
+                System.out.println(dayName);
+                break;
+            default: dayName = "Unknown";   // else와 비슷한 역할이지만 위치는 상관없음
+                System.out.println(dayName);
+                break;
+        }
+        System.out.println("result: " + dayName);
+        System.out.println("----------");
+
+        // break가 없을 경우 true가 된 시점부터 모두 출력한다.
+        int day2 = 9;
+        String dayName2 = "";
+        switch (day2) {
+            case 0: dayName2 = "Mon";
+                System.out.println(dayName2);
+            case 1: dayName2 = "Tue";
+                System.out.println(dayName2);
+            case 2: dayName2 = "Wen";
+                System.out.println(dayName2);
+            case 3: dayName2 = "Thu";
+                System.out.println(dayName2);
+            case 4: dayName2 = "Fri";
+                System.out.println(dayName2);
+            default: dayName2 = "Unknown";      // default는 어디나 위치할 수 있다.
+                System.out.println(dayName2);
+            case 5: dayName2 = "Sat";
+                System.out.println(dayName2);
+            case 6: dayName2 = "Sun";
+                System.out.println(dayName2);
+        }
+        System.out.println("result: " + dayName2);
+        System.out.println("----------");
+
+        // 반복문
+        // while
+        int countNum = 0;
+        while (countNum <10) {
+//            countNum++;	// countNum += 1도 가능
+            System.out.println(++countNum+"초");
+            if (countNum==6) {
+                System.out.print("뭐였더라...?    ");
+                countNum = countNum+2;
+                System.out.println(countNum+"초!");
+                continue;       // continue: 이번 반복을 끝내고 다음 반복 진행.
+            }
+            if (countNum==10) {
+                System.out.println("다 셋다!");
+            }
+            if (countNum==9) {
+                System.out.println("몰라. 다 센 거다!");
+                break;      // break로 중간에 탈출 가능
+            }
+        } System.out.println("----------");
+
+        // for
+        String[] numbers = {"one", "two", "three"};
+        // numI를 기준으로 numI가 numbers.length미만인 한 numI++을 한다.
+        // 배열이라 생각하면 numI를 0에서부터 numbers.length미만이 아닐 때까지 numI++한 값들로 배열을 만든다.
+        for(int numI=0; numI<numbers.length; numI++) {
+        //      초기치;  조건문;               증가치
+            System.out.println(numbers[numI]);
+        } System.out.println("----------");
     }
 }
