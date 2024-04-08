@@ -5,7 +5,7 @@ class Animal{
         this.name = name;   // this: 현재 사용하는 인스터스를 의미(파이썬의 self)
     }
 }
-public class Study01 {
+public class ClassStudy {
     public static void main(String[] args) {
         Animal cat = new Animal();      // 인스턴스
         System.out.println(cat+" Type: "+cat.getClass().getName());
