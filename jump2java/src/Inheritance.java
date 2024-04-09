@@ -12,6 +12,21 @@ class Housedog extends Dog {
         System.out.println(this.name+" zzz in house for "+hour+" hours");
     }
 }
+// 생성자
+class ConstructorDog extends Housedog {
+//    ConstructorDog(String name) {
+//    } // 기본(Default) 생성자: 생성자만 존재. 미기재 시 컴파일러가 자동 생성.
+    ConstructorDog(String name) {   // 클래스명과 동일. 산출값 미정의
+        this.setName(name);
+    }
+    ConstructorDog(int type) {  // 생성자 오버로딩
+        if (type==1) {
+            this.setName("Jindo");
+        } else if (type==2) {
+            this.setName("sabsal");
+        }
+    }
+}
 
 public class Inheritance {
     public static void main(String[] args) {
@@ -40,12 +55,18 @@ public class Inheritance {
         dog3.name = "happy";
         dog3.sleep();
         dog3.sleep(4);
-        System.out.println();
+        System.out.println("==========");
+
+        // 생성자
+        ConstructorDog dog4 = new ConstructorDog("choko");
+        ConstructorDog dog5 = new ConstructorDog(2);
+        dog4.sleep(3);
+        dog5.sleep();
         System.out.println("==========");
 
         // 상속 메서드 관계 확인
         C temp = new C();
-        temp.msg();
+        temp.msg();			// 마지막에 상속된 메서드 실행
         temp.msg2();        // B에서 구현하지 않아도 A의 메서드까지 모두 상속
         A temp3 = new B();
         temp3.msg();        // B의 메서드 실행
@@ -69,6 +90,5 @@ class B extends A{
         System.out.println("B message");
     }
 }
-
 class C extends B {
 }
